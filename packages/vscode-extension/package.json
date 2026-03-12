@@ -1,0 +1,159 @@
+{
+  "name": "otoinstall",
+  "displayName": "OtoInstall — AI Deploy",
+  "description": "Deploy your AI-generated projects to live servers in seconds. Right-click → Deploy. Works with any hosting via FTP/SFTP/SSH.",
+  "version": "1.0.0",
+  "publisher": "otoinstall",
+  "icon": "media/icon.png",
+  "galleryBanner": {
+    "color": "#0f172a",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Snippets",
+    "SCM Providers"
+  ],
+  "keywords": [
+    "deploy",
+    "hosting",
+    "ftp",
+    "sftp",
+    "ssh",
+    "vibecoding",
+    "ai",
+    "cursor",
+    "claude",
+    "bolt",
+    "publish",
+    "upload"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/otoinstall/vscode-extension"
+  },
+  "homepage": "https://otoinstall.com",
+  "bugs": {
+    "url": "https://github.com/otoinstall/vscode-extension/issues"
+  },
+  "license": "MIT",
+  "contributes": {
+    "commands": [
+      {
+        "command": "otoinstall.deploy",
+        "title": "🚀 Deploy Project",
+        "category": "OtoInstall",
+        "icon": "$(cloud-upload)"
+      },
+      {
+        "command": "otoinstall.deployZip",
+        "title": "📦 Deploy ZIP File",
+        "category": "OtoInstall"
+      },
+      {
+        "command": "otoinstall.checkStatus",
+        "title": "📊 Check Deploy Status",
+        "category": "OtoInstall"
+      },
+      {
+        "command": "otoinstall.viewLogs",
+        "title": "📋 View Deploy Logs",
+        "category": "OtoInstall"
+      },
+      {
+        "command": "otoinstall.listServers",
+        "title": "🖥️ List Servers",
+        "category": "OtoInstall"
+      },
+      {
+        "command": "otoinstall.listProjects",
+        "title": "📂 List Projects",
+        "category": "OtoInstall"
+      },
+      {
+        "command": "otoinstall.setApiKey",
+        "title": "🔑 Set API Key",
+        "category": "OtoInstall"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "otoinstall.deploy",
+          "group": "otoinstall@1",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "otoinstall.deployZip",
+          "group": "otoinstall@2",
+          "when": "resourceExtname == .zip"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "otoinstall.deploy",
+          "group": "navigation",
+          "when": "workspaceFolderCount > 0"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "OtoInstall",
+      "properties": {
+        "otoinstall.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Your OtoInstall API key (starts with oi_live_ or oi_test_)",
+          "scope": "application"
+        },
+        "otoinstall.baseUrl": {
+          "type": "string",
+          "default": "https://otoinstall.com",
+          "description": "OtoInstall API base URL"
+        },
+        "otoinstall.autoDetectProjectType": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically detect project type (Laravel, React, etc.)"
+        },
+        "otoinstall.showStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show deploy button in status bar"
+        }
+      }
+    },
+    "keybindings": [
+      {
+        "command": "otoinstall.deploy",
+        "key": "ctrl+shift+d",
+        "mac": "cmd+shift+d",
+        "when": "workspaceFolderCount > 0"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "npx @vscode/vsce package",
+    "publish": "npx @vscode/vsce publish"
+  },
+  "devDependencies": {
+    "@types/archiver": "^7.0.0",
+    "@types/node": "^22.10.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.2.0",
+    "typescript": "^5.7.0"
+  },
+  "dependencies": {
+    "archiver": "^7.0.1"
+  }
+}

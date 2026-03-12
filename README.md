@@ -1,235 +1,202 @@
-<div align="center">
-
 # 🚀 OtoInstall Developer Tools
 
-### AI ile Kodladın — Biz Yayınlıyoruz
+> **AI ile kodladın, biz yayınlıyoruz!**  
+> Deploy your AI-generated projects to any hosting in seconds.
 
-**Deploy your AI-generated projects to live servers in 60 seconds.**
-
-[![VSCode Extension](https://img.shields.io/badge/VSCode-Extension-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)](https://otoinstall.com/#developer-tools)
-[![MCP Server](https://img.shields.io/badge/MCP-Server-6366f1?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0tMSAxNy45M2MtMy45NS0uNDktNy0zLjg1LTctNy45MyAwLS42Mi4wOC0xLjIxLjIxLTEuNzlMOSAxNXYxYzAgMS4xLjkgMiAyIDJ2MS45M3ptNi45LTIuNTRjLS4yNi0uODEtMS0xLjM5LTEuOS0xLjM5aC0xdi0zYzAtLjU1LS40NS0xLTEtMUg4di0yaDJjLjU1IDAgMS0uNDUgMS0xVjdoMmMxLjEgMCAyLS45IDItMnYtLjQxYzIuOTMgMS4xOSA1IDQuMDYgNSA3LjQxIDAgMi4wOC0uOCAzLjk3LTIuMSA1LjM5eiIvPjwvc3ZnPg==)](https://otoinstall.com/#developer-tools)
-[![CLI Tool](https://img.shields.io/badge/CLI-Tool-10b981?style=for-the-badge&logo=gnubash&logoColor=white)](https://otoinstall.com/#developer-tools)
-[![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
-
-[Website](https://otoinstall.com) · [Documentation](https://otoinstall.com/docs) · [Get API Key](https://otoinstall.com/register)
-
-</div>
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![API Status](https://img.shields.io/endpoint?url=https://otoinstall.com/api/v1/health&label=API&style=flat)](https://otoinstall.com)
 
 ---
 
-## 🤖 What is OtoInstall?
+## 🤔 What is OtoInstall?
 
-OtoInstall is the **deployment bridge** between AI coding tools and live servers. Built for the **Vibe Coding** era.
+OtoInstall is an **automated deployment platform** that takes your web projects (built with Cursor, Lovable, Bolt, v0.dev, or any AI tool) and deploys them to your hosting server with:
 
-You code with **Cursor, Bolt, Lovable, v0.dev, Claude, ChatGPT** — we handle deployment, security scanning, and server setup automatically.
-
-```
-AI writes code → OtoInstall deploys it → Your site is LIVE in 60 seconds
-```
+- 🔍 **Auto-detection** — Recognizes Laravel, React, Vue, Next.js, WordPress, PHP, HTML
+- 🛡️ **Security scanning** — Checks for vulnerabilities before deployment
+- 🔧 **Auto-fix** — Resolves compatibility issues automatically
+- 🚀 **One-click deploy** — Uploads via FTP/SFTP to your server
+- ✅ **Verification** — Confirms your site is live and working
 
 ---
 
-## 📦 Developer Tools
+## 📦 Available Tools
 
-### 1. MCP Server (Model Context Protocol)
+| Tool | Description | For |
+|------|-------------|-----|
+| [**MCP Server**](packages/mcp-server/) | Deploy from any MCP-compatible AI tool | Cursor, Claude Desktop, Windsurf, Cline, Zed |
+| [**CLI**](packages/cli/) | Deploy from your terminal | Developers, CI/CD |
+| [**VS Code Extension**](packages/vscode-extension/) | Deploy with a button click | VS Code users |
 
-Let your AI assistant deploy directly. Works with **9+ AI tools**.
+---
 
+## ⚡ Quick Start
+
+### 1. Get Your API Key
+1. Sign up at [otoinstall.com](https://otoinstall.com/register)
+2. Add your server (FTP/SFTP credentials)
+3. Create an API key at Dashboard → API Keys
+
+### 2. Choose Your Tool
+
+---
+
+### 🤖 MCP Server (For AI Tools)
+
+Works with **Cursor, Claude Desktop, Windsurf, Cline, Continue, Zed** and any MCP-compatible tool.
+
+**Setup (Cursor):**
+
+Add to `~/.cursor/mcp.json`:
 ```json
 {
   "mcpServers": {
     "otoinstall": {
       "command": "npx",
-      "args": ["-y", "@otoinstall/mcp-server"],
+      "args": ["-y", "otoinstall-mcp-server"],
       "env": {
-        "OTOINSTALL_API_KEY": "your-api-key"
+        "OTOINSTALL_API_KEY": "oi_live_your_key_here"
       }
     }
   }
 }
 ```
 
-**Supported AI Tools:**
-| Tool | Config Location |
-|------|----------------|
-| Claude Desktop | `~/Library/Application Support/Claude/claude_desktop_config.json` |
-| Cursor | Settings → MCP Servers |
-| Windsurf | `~/.codeium/windsurf/mcp_config.json` |
-| Cline | VSCode Settings → Cline MCP |
-| Continue | `~/.continue/config.json` |
-| Zed | Settings → Assistant → MCP |
-| Roo Code | Settings → MCP Servers |
-| Antigravity | Settings → MCP Servers |
-| GitHub Copilot | `.github/copilot-mcp.json` |
+**Setup (Claude Desktop):**
 
-**Available MCP Tools:**
-- `deploy_project` — Deploy a directory to live server
-- `deploy_zip` — Deploy a ZIP file
-- `check_deploy_status` — Real-time deployment progress
-- `view_deploy_logs` — Deployment history & logs
-- `list_servers` — Available servers
-- `list_projects` — Your projects
-- `get_server_credentials` — Server access info
+Add to `%APPDATA%/Claude/claude_desktop_config.json` (Windows) or `~/Library/Application Support/Claude/claude_desktop_config.json` (Mac):
+```json
+{
+  "mcpServers": {
+    "otoinstall": {
+      "command": "npx",
+      "args": ["-y", "otoinstall-mcp-server"],
+      "env": {
+        "OTOINSTALL_API_KEY": "oi_live_your_key_here"
+      }
+    }
+  }
+}
+```
+
+**Usage:**
+```
+You: "Deploy this project to my server"
+AI: → Lists servers → Zips project → Uploads → Scans → Deploys → "🎉 Your site is live!"
+```
+
+**Available Tools:**
+
+| Tool | Description |
+|------|-------------|
+| `deploy_project` | Zip and deploy a directory |
+| `deploy_zip` | Deploy an existing ZIP file |
+| `check_deploy_status` | Check deployment progress |
+| `get_deploy_logs` | Get deployment logs |
+| `list_servers` | List configured servers |
+| `list_projects` | List deployment history |
+| `whoami` | Account information |
 
 ---
 
-### 2. VSCode Extension
-
-One-click deploy from your editor.
+### ⌨️ CLI Tool
 
 **Install:**
 ```bash
-# Download .vsix from otoinstall.com
-code --install-extension otoinstall-1.0.0.vsix
+npm install -g otoinstall-cli
 ```
 
-**Features:**
-- 🚀 Right-click → Deploy Project
-- 📊 Real-time progress notifications
-- 🔑 Secure API key management
-- 📜 Deploy log viewer
-- 🖥️ Server selector (QuickPick)
-- ⚡ Status bar deploy button
-
-**Commands:**
-| Command | Description |
-|---------|-------------|
-| `OtoInstall: Deploy Project` | Deploy current workspace |
-| `OtoInstall: Deploy ZIP` | Deploy a ZIP file |
-| `OtoInstall: Check Status` | Check deployment status |
-| `OtoInstall: View Logs` | View deployment history |
-| `OtoInstall: List Servers` | Browse available servers |
-| `OtoInstall: List Projects` | Browse your projects |
-| `OtoInstall: Set API Key` | Configure authentication |
-
----
-
-### 3. CLI Tool
-
-Deploy from your terminal. Perfect for CI/CD.
-
+**Usage:**
 ```bash
-# Quick deploy
-npx @otoinstall/cli deploy
-
-# Login first
-npx @otoinstall/cli login
+# Login
+otoinstall login
 
 # Deploy current directory
-npx @otoinstall/cli deploy ./my-project
+otoinstall deploy .
 
-# Deploy ZIP
-npx @otoinstall/cli deploy --zip ./project.zip
+# Deploy a ZIP file
+otoinstall deploy --zip project.zip
+
+# Deploy to a specific server
+otoinstall deploy ./my-app --server 1
 
 # Check status
-npx @otoinstall/cli status <deploy-id>
+otoinstall status <deploy-id>
 
 # View logs
-npx @otoinstall/cli logs
+otoinstall logs <deploy-id>
+
+# List servers
+otoinstall servers
 ```
 
 ---
 
-## 🏗️ Architecture
+### 💻 VS Code Extension
 
-```
-┌─────────────────────────────────────────────────┐
-│                  AI Coding Tools                │
-│  Cursor · Claude · Bolt · Lovable · v0 · GPT   │
-└────────────────┬───────────────────┬────────────┘
-                 │                   │
-     ┌───────────▼───────┐ ┌────────▼────────┐
-     │   MCP Protocol    │ │  VSCode / CLI   │
-     │  (7 tools)        │ │  (7 commands)   │
-     └───────────┬───────┘ └────────┬────────┘
-                 │                   │
-         ┌───────▼───────────────────▼───────┐
-         │         OtoInstall API            │
-         │    https://otoinstall.com/api/v1  │
-         └───────────────┬───────────────────┘
-                         │
-              ┌──────────▼──────────┐
-              │  Deployment Engine  │
-              │  ┌────────────────┐ │
-              │  │ Security Scan  │ │
-              │  │ Auto-Fix (AI)  │ │
-              │  │ FTP/SFTP/SSH   │ │
-              │  │ SSL Setup      │ │
-              │  │ DNS Config     │ │
-              │  └────────────────┘ │
-              └──────────┬──────────┘
-                         │
-                   ┌─────▼─────┐
-                   │  LIVE! 🌐 │
-                   └───────────┘
-```
+**Install:**
+1. Download [otoinstall-1.0.0.vsix](https://otoinstall.com/downloads/otoinstall-1.0.0.vsix)
+2. In VS Code: Extensions → `...` → **"Install from VSIX..."**
+3. Set API key: `Ctrl+Shift+P` → "OtoInstall: Set API Key"
+
+**Usage:**
+- Click **"☁️ Deploy"** in the status bar
+- Or right-click a folder → **"🚀 Deploy Project"**
+- Or press `Ctrl+Shift+D`
 
 ---
 
-## 🔐 Security
+## 🔌 REST API
 
-- **API Key Authentication** — Every request requires a valid key
-- **HTTPS Only** — All communication encrypted via TLS 1.3
-- **File Filtering** — Sensitive files (`.env`, `.git`, `node_modules`) never uploaded
-- **Security Scanning** — AI-powered vulnerability detection before deployment
-- **Argon2id Hashing** — Password security
-- **Rate Limiting** — API abuse protection
+All tools communicate through the OtoInstall REST API.
 
----
+**Base URL:** `https://otoinstall.com/api/v1`
 
-## 🚀 Quick Start
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| `GET` | `/health` | ❌ | System status |
+| `GET` | `/me` | ✅ | Account info |
+| `GET` | `/credentials` | ✅ | List servers |
+| `POST` | `/deploy` | ✅ | Upload ZIP + start deploy |
+| `GET` | `/projects` | ✅ | Deployment history |
+| `GET` | `/deploy/{id}/status` | ✅ | Deployment status |
+| `GET` | `/deploy/{id}/logs` | ✅ | Deployment logs |
 
-1. **Sign up** at [otoinstall.com](https://otoinstall.com/register)
-2. **Get your API key** from Dashboard → API Keys
-3. **Choose your tool:**
-
+**Example:**
 ```bash
-# MCP Server (for AI tools)
-# Add the config above to your AI tool's settings
-
-# VSCode Extension
-# Download from otoinstall.com/#developer-tools
-
-# CLI
-npx @otoinstall/cli login
-npx @otoinstall/cli deploy
+curl -X POST https://otoinstall.com/api/v1/deploy \
+  -H "Authorization: Bearer oi_live_your_key" \
+  -F "file=@project.zip" \
+  -F "credential_id=1" \
+  -F "project_type=auto"
 ```
 
 ---
 
-## 📝 API Reference
+## 🎯 Works With Every AI Tool
 
-Base URL: `https://otoinstall.com/api/v1`
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/deploy` | POST | Deploy project (multipart) |
-| `/deploy/{id}/status` | GET | Deployment status |
-| `/deploy/{id}/logs` | GET | Deployment logs |
-| `/servers` | GET | List servers |
-| `/projects` | GET | List projects |
-| `/servers/{id}/credentials` | GET | Server credentials |
-
-**Authentication:** `Authorization: Bearer YOUR_API_KEY`
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+| AI Tool | Integration | How |
+|---------|-------------|-----|
+| **Cursor** | ✅ MCP Server | Say "deploy this project" |
+| **Claude Desktop** | ✅ MCP Server | Say "deploy this project" |
+| **Windsurf / Cline / Zed** | ✅ MCP Server | Say "deploy this project" |
+| **VS Code** | ✅ Extension | Click deploy button |
+| **Terminal** | ✅ CLI | `otoinstall deploy .` |
+| **Manus** | 🔌 HTTP API | Provide API docs to agent |
+| **ChatGPT** | 📦 Export ZIP | Upload at otoinstall.com |
+| **Lovable / Bolt / v0.dev** | 📦 Export ZIP | Download → upload or CLI |
+| **Replit** | 🔌 HTTP API | Use curl in shell |
 
 ---
 
 ## 📄 License
 
-MIT License — see [LICENSE](LICENSE) for details.
+MIT — see [LICENSE](LICENSE) for details.
 
 ---
 
-<div align="center">
+## 🔗 Links
 
-**Built with ❤️ by [OVK Digital](https://ovkweb.com)**
-
-[Website](https://otoinstall.com) · [Twitter](https://twitter.com/otoinstall) · [Discord](https://discord.gg/otoinstall)
-
-</div>
+- 🌐 **Website:** [otoinstall.com](https://otoinstall.com)
+- 📖 **Documentation:** [otoinstall.com/docs](https://otoinstall.com/docs)
+- 💬 **Support:** [WhatsApp](https://wa.me/905538404141)

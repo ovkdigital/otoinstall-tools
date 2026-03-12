@@ -1,0 +1,42 @@
+{
+  "name": "otoinstall-mcp-server",
+  "version": "1.0.0",
+  "description": "OtoInstall MCP Server — Deploy projects from Claude, Cursor, Windsurf, Cline, Zed, and any MCP-compatible AI tool",
+  "keywords": ["mcp", "otoinstall", "deploy", "claude", "cursor", "windsurf", "cline", "ai-tools", "vibecoding"],
+  "license": "MIT",
+  "author": "OtoInstall <hello@otoinstall.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ovkdigital/otoinstall-tools.git",
+    "directory": "packages/mcp-server"
+  },
+  "homepage": "https://otoinstall.com",
+  "bugs": "https://github.com/ovkdigital/otoinstall/issues",
+  "type": "module",
+  "bin": {
+    "otoinstall-mcp": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "files": ["dist", "README.md"],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "archiver": "^7.0.1",
+    "node-fetch": "^3.3.2",
+    "form-data": "^4.0.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/archiver": "^6.0.3",
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
