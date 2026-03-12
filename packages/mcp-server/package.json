@@ -1,6 +1,6 @@
 {
   "name": "otoinstall-mcp-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "OtoInstall MCP Server — Deploy projects from Claude, Cursor, Windsurf, Cline, Zed, and any MCP-compatible AI tool",
   "keywords": ["mcp", "otoinstall", "deploy", "claude", "cursor", "windsurf", "cline", "ai-tools", "vibecoding"],
   "license": "MIT",

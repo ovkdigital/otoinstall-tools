@@ -4,6 +4,8 @@
 > Deploy your AI-generated projects to any hosting in seconds.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![npm: mcp-server](https://img.shields.io/npm/v/otoinstall-mcp-server?label=MCP%20Server&color=green)](https://www.npmjs.com/package/otoinstall-mcp-server)
+[![npm: cli](https://img.shields.io/npm/v/otoinstall-cli?label=CLI&color=green)](https://www.npmjs.com/package/otoinstall-cli)
 [![API Status](https://img.shields.io/endpoint?url=https://otoinstall.com/api/v1/health&label=API&style=flat)](https://otoinstall.com)
 
 ---

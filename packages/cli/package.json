@@ -1,16 +1,26 @@
 {
   "name": "otoinstall-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "OtoInstall CLI — Deploy projects from your terminal",
-  "keywords": ["otoinstall", "deploy", "cli", "ftp", "sftp", "hosting"],
+  "keywords": [
+    "otoinstall",
+    "deploy",
+    "cli",
+    "ftp",
+    "sftp",
+    "hosting"
+  ],
   "license": "MIT",
   "author": "OtoInstall <hello@otoinstall.com>",
   "type": "module",
   "bin": {
-    "otoinstall": "./dist/index.js"
+    "otoinstall": "dist/index.js"
   },
   "main": "./dist/index.js",
-  "files": ["dist", "README.md"],
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
