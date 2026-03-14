@@ -15,10 +15,12 @@
 OtoInstall is an **automated deployment platform** that takes your web projects (built with Cursor, Lovable, Bolt, v0.dev, or any AI tool) and deploys them to your hosting server with:
 
 - 🔍 **Auto-detection** — Recognizes Laravel, React, Vue, Next.js, WordPress, PHP, HTML
-- 🛡️ **Security scanning** — Checks for vulnerabilities before deployment
-- 🔧 **Auto-fix** — Resolves compatibility issues automatically
-- 🚀 **One-click deploy** — Uploads via FTP/SFTP to your server
-- ✅ **Verification** — Confirms your site is live and working
+- 🛡️ **Security scanning** — Checks for malware, SQL injection, XSS before deployment
+- 🔧 **Auto-fix** — Creates .env, .htaccess, fixes permissions automatically
+- 🏗️ **Node.js Build** — Auto `npm install && npm run build` for React/Vue/Next.js
+- 🚀 **Multi-protocol deploy** — Uploads via FTP, SFTP, or SSH to any server
+- ✅ **Verification** — HTTP check confirms your site is live and working
+- 🧠 **AI Learning** — System learns from every deployment to improve auto-fixes
 
 ---
 
@@ -87,15 +89,17 @@ You: "Deploy this project to my server"
 AI: → Lists servers → Zips project → Uploads → Scans → Deploys → "🎉 Your site is live!"
 ```
 
-**Available Tools:**
+**Available Tools (9 total):**
 
 | Tool | Description |
 |------|-------------|
+| `analyze_project` | **Required first** — Analyze project type, dependencies, compatibility |
 | `deploy_project` | Zip and deploy a directory |
 | `deploy_zip` | Deploy an existing ZIP file |
 | `check_deploy_status` | Check deployment progress |
 | `get_deploy_logs` | Get deployment logs |
 | `list_servers` | List configured servers |
+| `add_server` | Save new FTP/SFTP/SSH server credentials via AI |
 | `list_projects` | List deployment history |
 | `whoami` | Account information |
 
@@ -159,6 +163,7 @@ All tools communicate through the OtoInstall REST API.
 | `GET` | `/health` | ❌ | System status |
 | `GET` | `/me` | ✅ | Account info |
 | `GET` | `/credentials` | ✅ | List servers |
+| `POST` | `/credentials` | ✅ | Save new server credentials |
 | `POST` | `/deploy` | ✅ | Upload ZIP + start deploy |
 | `GET` | `/projects` | ✅ | Deployment history |
 | `GET` | `/deploy/{id}/status` | ✅ | Deployment status |
